@@ -13,11 +13,11 @@ workflows:
     jobs:
       - docker/publish:
           deploy: false
-          image: kfdrc/samtools
-          tag: 1.9
-          path: samtools/1.9/
+          image: "kfdrc/samtools"
+          tag: "1.9"
+          path: "samtools/1.9/"
       - docker/publish:
           deploy: false
-          image: kfdrc/samtools
-          tag: 1.6
-          path: samtools/1.6/
+          image: "kfdrc/samtools"
+          tag: "1.6"
+          path: "samtools/1.6/"
