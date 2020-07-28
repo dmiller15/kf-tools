@@ -3,13 +3,13 @@ orbs:
   docker: circleci/docker@1.3.0
 workflows:
   samtools-monthly:
-    triggers:
-      - schedule:
-         cron: "* * 1 * *"
-         filters:
-           branches:
-             only:
-               - master
+#    triggers:
+#      - schedule:
+#         cron: "* * 1 * *"
+#         filters:
+#           branches:
+#             only:
+#               - master
     jobs:
       - docker/publish:
           deploy: false
