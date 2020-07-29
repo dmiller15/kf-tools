@@ -56,77 +56,6 @@ commands:
           \  echo \"Files modified, continuing steps\"\nfi\n"
         name: Only run if modified
     - steps: << parameters.steps-to-run >>
-jobs:
-  samtools_1711g041220d_diff:
-    executor: docker/docker
-    steps:
-    - checkout
-    - run_if_modified:
-        pattern: samtools/1.7-11-g041220d/Dockerfile
-    - setup_remote_docker
-    - checkout
-    - docker/check
-    - docker/build:
-        image: kfdrc/samtools
-        tag: 1.7-11-g041220d
-        path: samtools/1.7-11-g041220d/
-        docker-context: samtools/1.7-11-g041220d/
-  samtools_19_diff:
-    executor: docker/docker
-    steps:
-    - checkout
-    - run_if_modified:
-        pattern: samtools/1.9/Dockerfile
-    - setup_remote_docker
-    - checkout
-    - docker/check
-    - docker/build:
-        image: kfdrc/samtools
-        tag: '1.9'
-        path: samtools/1.9/
-        docker-context: samtools/1.9/
-  samtools_16_diff:
-    executor: docker/docker
-    steps:
-    - checkout
-    - run_if_modified:
-        pattern: samtools/1.6/Dockerfile
-    - setup_remote_docker
-    - checkout
-    - docker/check
-    - docker/build:
-        image: kfdrc/samtools
-        tag: '1.6'
-        path: samtools/1.6/
-        docker-context: samtools/1.6/
-  samtools_131_diff:
-    executor: docker/docker
-    steps:
-    - checkout
-    - run_if_modified:
-        pattern: samtools/1.3.1/Dockerfile
-    - setup_remote_docker
-    - checkout
-    - docker/check
-    - docker/build:
-        image: kfdrc/samtools
-        tag: 1.3.1
-        path: samtools/1.3.1/
-        docker-context: samtools/1.3.1/
-  samtools_latest_diff:
-    executor: docker/docker
-    steps:
-    - checkout
-    - run_if_modified:
-        pattern: samtools/latest/Dockerfile
-    - setup_remote_docker
-    - checkout
-    - docker/check
-    - docker/build:
-        image: kfdrc/samtools
-        tag: latest
-        path: samtools/latest/
-        docker-context: samtools/latest/
 workflows:
   monthly:
     triggers:
@@ -174,8 +103,23 @@ workflows:
         docker-context: samtools/latest/
   diff:
     jobs:
-    - samtools_1711g041220d_diff
-    - samtools_19_diff
-    - samtools_16_diff
-    - samtools_131_diff
-    - samtools_latest_diff
+    - docker/publish:
+        name: samtools-1.6_diff
+        before_build:
+        - run_if_modified:
+            pattern: samtools/1.6/Dockerfile
+        deploy: false
+        image: kfdrc/samtools
+        tag: '1.6'
+        path: samtools/1.6/
+        docker-context: samtools/1.6/
+    - docker/publish:
+        name: samtools-1.9_diff
+        before_build:
+        - run_if_modified:
+            pattern: samtools/1.9/Dockerfile
+        deploy: false
+        image: kfdrc/samtools
+        tag: '1.9'
+        path: samtools/1.9/
+        docker-context: samtools/1.9/
