@@ -2,66 +2,19 @@ version: 2.1
 orbs:
   docker: circleci/docker@1.3.0
 jobs:
-  samtools_1.7-11-g041220d_diff:
+  samtools_diff:
     executor: docker/docker
     steps:
     - checkout
     - run_if_modified:
-        pattern: samtools/latest/Dockerfile
+        pattern: samtools/1.7-11-g041220d/Dockerfile
         steps-to-run:
         - docker/build:
             image: kfdrc/samtools
-            tag: latest
-            path: samtools/latest/
-            docker-context: samtools/latest/
-  samtools_1.9_diff:
-    executor: docker/docker
-    steps:
-    - checkout
-    - run_if_modified:
-        pattern: samtools/latest/Dockerfile
-        steps-to-run:
-        - docker/build:
-            image: kfdrc/samtools
-            tag: latest
-            path: samtools/latest/
-            docker-context: samtools/latest/
-  samtools_1.6_diff:
-    executor: docker/docker
-    steps:
-    - checkout
-    - run_if_modified:
-        pattern: samtools/latest/Dockerfile
-        steps-to-run:
-        - docker/build:
-            image: kfdrc/samtools
-            tag: latest
-            path: samtools/latest/
-            docker-context: samtools/latest/
-  samtools_1.3.1_diff:
-    executor: docker/docker
-    steps:
-    - checkout
-    - run_if_modified:
-        pattern: samtools/latest/Dockerfile
-        steps-to-run:
-        - docker/build:
-            image: kfdrc/samtools
-            tag: latest
-            path: samtools/latest/
-            docker-context: samtools/latest/
-  samtools_latest_diff:
-    executor: docker/docker
-    steps:
-    - checkout
-    - run_if_modified:
-        pattern: samtools/latest/Dockerfile
-        steps-to-run:
-        - docker/build:
-            image: kfdrc/samtools
-            tag: latest
-            path: samtools/latest/
-            docker-context: samtools/latest/
+            tag: 1.7-11-g041220d
+            path: samtools/1.7-11-g041220d/
+            docker-context: samtools/1.7-11-g041220d/
+            name: samtools_1.7-11-g041220d_diff
 workflows:
   monthly:
     triggers:
@@ -109,8 +62,4 @@ workflows:
         docker-context: samtools/latest/
   diff:
     jobs:
-    - samtools_1.7-11-g041220d_diff
-    - samtools_1.9_diff
-    - samtools_1.6_diff
-    - samtools_1.3.1_diff
-    - samtools_latest_diff
+    - samtools_diff
