@@ -65,6 +65,7 @@ jobs:
         pattern: samtools/1.7-11-g041220d/Dockerfile
         steps-to-run:
         - setup_remote_docker
+        - checkout
         - docker/check
         - docker/build:
             image: kfdrc/samtools
@@ -79,6 +80,7 @@ jobs:
         pattern: samtools/1.9/Dockerfile
         steps-to-run:
         - setup_remote_docker
+        - checkout
         - docker/check
         - docker/build:
             image: kfdrc/samtools
@@ -93,6 +95,7 @@ jobs:
         pattern: samtools/1.6/Dockerfile
         steps-to-run:
         - setup_remote_docker
+        - checkout
         - docker/check
         - docker/build:
             image: kfdrc/samtools
@@ -107,6 +110,7 @@ jobs:
         pattern: samtools/1.3.1/Dockerfile
         steps-to-run:
         - setup_remote_docker
+        - checkout
         - docker/check
         - docker/build:
             image: kfdrc/samtools
@@ -121,6 +125,7 @@ jobs:
         pattern: samtools/latest/Dockerfile
         steps-to-run:
         - setup_remote_docker
+        - checkout
         - docker/check
         - docker/build:
             image: kfdrc/samtools
