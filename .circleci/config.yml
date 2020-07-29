@@ -112,7 +112,7 @@ workflows:
         docker-context: samtools/1.7-11-g041220d/
         before_build:
         - run_if_modified:
-          - pattern: samtools/1.7-11-g041220d/Dockerfile
+            pattern: samtools/1.7-11-g041220d/Dockerfile
     - docker/publish:
         name: samtools_1.9
         deploy: false
@@ -122,7 +122,7 @@ workflows:
         docker-context: samtools/1.9/
         before_build:
         - run_if_modified:
-          - pattern: samtools/1.9/Dockerfile
+            pattern: samtools/1.9/Dockerfile
     - docker/publish:
         name: samtools_1.6
         deploy: false
@@ -132,7 +132,7 @@ workflows:
         docker-context: samtools/1.6/
         before_build:
         - run_if_modified:
-          - pattern: samtools/1.6/Dockerfile
+            pattern: samtools/1.6/Dockerfile
     - docker/publish:
         name: samtools_1.3.1
         deploy: false
@@ -142,7 +142,7 @@ workflows:
         docker-context: samtools/1.3.1/
         before_build:
         - run_if_modified:
-          - pattern: samtools/1.3.1/Dockerfile
+            pattern: samtools/1.3.1/Dockerfile
     - docker/publish:
         name: samtools_latest
         deploy: false
@@ -152,4 +152,4 @@ workflows:
         docker-context: samtools/latest/
         before_build:
         - run_if_modified:
-          - pattern: samtools/latest/Dockerfile
+            pattern: samtools/latest/Dockerfile
