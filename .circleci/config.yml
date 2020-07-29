@@ -121,15 +121,15 @@ workflows:
         docker-context: samtools/latest/
   diff:
     jobs:
-      samtools_latest_diff:
-        steps:
-        - run_if_modified:
-            pattern: samtools/latest/Dockerfile
-            steps-to-run:
-            - docker/publish:
-                name: build_samtools_latest
-                deploy: false
-                image: kfdrc/samtools
-                tag: latest
-                path: samtools/latest/
-                docker-context: samtools/latest/
+      - samtools_latest_diff:
+          steps:
+          - run_if_modified:
+              pattern: samtools/latest/Dockerfile
+              steps-to-run:
+              - docker/publish:
+                  name: build_samtools_latest
+                  deploy: false
+                  image: kfdrc/samtools
+                  tag: latest
+                  path: samtools/latest/
+                  docker-context: samtools/latest/
