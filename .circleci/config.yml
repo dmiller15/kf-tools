@@ -75,7 +75,7 @@ commands:
     - steps: << parameters.steps-to-run >>
 jobs:
   samtools_latest_diff:
-    executor: machine
+    executor: docker 
     steps:
     - run_if_modified:
         pattern: samtools/latest/Dockerfile
