@@ -77,6 +77,7 @@ jobs:
   samtools_latest_diff:
     executor: docker/docker 
     steps:
+    - checkout
     - run_if_modified:
         pattern: samtools/latest/Dockerfile
         steps-to-run:
