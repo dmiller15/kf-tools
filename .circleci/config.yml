@@ -80,9 +80,7 @@ jobs:
     - run_if_modified:
         pattern: samtools/latest/Dockerfile
         steps-to-run:
-        - docker/publish:
-            name: build_samtools_latest
-            deploy: false
+        - docker/build:
             image: kfdrc/samtools
             tag: latest
             path: samtools/latest/
